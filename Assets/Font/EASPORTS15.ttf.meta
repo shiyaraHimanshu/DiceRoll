@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 74dd2034a40413d4189eff997e741289
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - EA Font v1.5 by Ghettoshark
+  fallbackFontReferences: []
+  customCharacters: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\xE1\xE9\xED\xF3\xFA\xE2\xEA\xEE\xF4\xFB\xE3\xF5\xE7\xC1\xC9\xCD\xD3\xDA\xC2\xCA\xCE\xD4\xDB\xC3\xD5\xC7"
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: DiceRollText Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: DiceRollText
+  m_TableCollectionNameGuidString: f9c2f4f8f3237a74baf5de8f563d670e
+  m_Entries:
+  - m_Id: 27028885504
+    m_Key: TXT_ROLL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389936844800
+    m_Key: TXT_TOTAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140418172588032
+    m_Key: TXT_SOUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140482458685440
+    m_Key: VIBRATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140526700204032
+    m_Key: NUMBER DISPLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140555544432640
+    m_Key: DICE RANGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140584279609344
+    m_Key: DICE ANIMATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140608765956096
+    m_Key: BACKGROUND COLOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140630546976768
+    m_Key: DICE COUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 141699398242304
+    m_Key: SETTING
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3582620379934360032
+  references:
+    version: 2
+    RefIds:
+    - rid: 3582620379934360032
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1773308639575

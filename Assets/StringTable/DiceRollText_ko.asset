@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: DiceRollText_ko
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: f9c2f4f8f3237a74baf5de8f563d670e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 27028885504
+    m_Localized: "\uC8FC\uC0AC\uC704 \uAD74\uB9AC\uAE30"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 389936844800
+    m_Localized: "\uCD1D\uD569"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140418172588032
+    m_Localized: "\uC0AC\uC6B4\uB4DC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140482458685440
+    m_Localized: "\uC9C4\uB3D9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140526700204032
+    m_Localized: "\uC22B\uC790 \uD45C\uC2DC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140555544432640
+    m_Localized: "\uC8FC\uC0AC\uC704 \uBC94\uC704"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140584279609344
+    m_Localized: "\uC8FC\uC0AC\uC704 \uC560\uB2C8\uBA54\uC774\uC158"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140608765956096
+    m_Localized: "\uBC30\uACBD\uC0C9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140630546976768
+    m_Localized: "\uC8FC\uC0AC\uC704 \uAC1C\uC218"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 141699398242304
+    m_Localized: "\uC124\uC815"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
