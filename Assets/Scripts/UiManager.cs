@@ -9,13 +9,24 @@ public class UiManager : MonoBehaviour
     public SettingPanel settingPanel;
     public Button settingButton;
     public bool isSettingOpen = false;
-    public Image soundImage;
-    public Sprite soundOnSprite;
-    public Sprite soundOffSprite;
+    public GameObject soundOnObject;
+    public GameObject soundOffObject;
 
-    public Image vibrateImage;
-    public Sprite vibrateOnSprite;
-    public Sprite vibrateOffSprite;
+    public GameObject vibrateOnObject;
+    public GameObject vibrateOffObject;
+
+    public Image selectedAnimationbase;
+    public Image selectedColorbase;
+
+    public List<Button> currentColors;
+    public List<GameObject> currentAnimations;
+
+    public static UiManager instance;
+
+    public void Awake()
+    {
+        instance = this;
+    }
 
     public void Start()
     {
@@ -36,6 +47,19 @@ public class UiManager : MonoBehaviour
         // Initialize Vibration Button
         bool isVibrationOn = PlayerPrefs.GetInt("Vibration", 1) == 1;
         UpdateVibrationButton(isVibrationOn);
+
+        // Initialize Selection Positions with a slight delay to ensure layout is ready
+        StartCoroutine(SetInitialSelectionPositions());
+    }
+
+    private IEnumerator SetInitialSelectionPositions()
+    {
+        // Wait until end of frame so layout groups and positions are calculated
+        yield return new WaitForEndOfFrame();
+        
+        BGCOLOR savedColor = (BGCOLOR)PlayerPrefs.GetInt("DiceColor", 0);
+        UpdateSelectedColorPosition(savedColor);
+        UpdateSelectedAnimationPosition(PlayerPrefs.GetInt("DiceAnimation", 0));
     }
 
     public void OnSoundButtonClick()
@@ -55,15 +79,19 @@ public class UiManager : MonoBehaviour
 
     public void UpdateSoundButton(bool isMuted)
     {
-        if (soundImage != null)
+        if (soundOnObject != null && soundOffObject != null)
         {
             if (isMuted)
             {
-                soundImage.sprite = soundOffSprite;
+                // Muted means sound is OFF
+                soundOnObject.SetActive(false);
+                soundOffObject.SetActive(true);
             }
             else
             {
-                soundImage.sprite = soundOnSprite;
+                // Not muted means sound is ON
+                soundOnObject.SetActive(true);
+                soundOffObject.SetActive(false);
             }
         }
     }
@@ -82,17 +110,78 @@ public class UiManager : MonoBehaviour
 
     public void UpdateVibrationButton(bool isVibrationOn)
     {
-        if (vibrateImage != null)
+        if (vibrateOnObject != null && vibrateOffObject != null)
         {
             if (isVibrationOn)
             {
-                vibrateImage.sprite = vibrateOnSprite;
+                vibrateOnObject.SetActive(true);
+                vibrateOffObject.SetActive(false);
             }
             else
             {
-                vibrateImage.sprite = vibrateOffSprite;
+                vibrateOnObject.SetActive(false);
+                vibrateOffObject.SetActive(true);
             }
         }
+    }
+
+    public void SetSelectionIndicatorsActive(bool isActive)
+    {
+        if (selectedColorbase != null) selectedColorbase.gameObject.SetActive(isActive);
+        if (selectedAnimationbase != null) selectedAnimationbase.gameObject.SetActive(isActive);
+    }
+
+    public void UpdateSelectedColorPosition(BGCOLOR color)
+    {
+        int index = GetColorUIIndex(color);
+        if (selectedColorbase != null && currentColors != null && index >= 0 && index < currentColors.Count)
+        {
+            selectedColorbase.gameObject.SetActive(true);
+            selectedColorbase.transform.position = currentColors[index].transform.position;
+        }
+    }
+
+    public void UpdateSelectedAnimationPosition(int index)
+    {
+        if (selectedAnimationbase != null && currentAnimations != null && index >= 0 && index < currentAnimations.Count)
+        {
+            selectedAnimationbase.gameObject.SetActive(true);
+            selectedAnimationbase.transform.position = currentAnimations[index].transform.position;
+        }
+    }
+
+    private int GetColorUIIndex(BGCOLOR color)
+    {
+        switch (color)
+        {
+            case BGCOLOR.RANDOM: return 0;
+            case BGCOLOR.GREEN: return 1;
+            case BGCOLOR.ORANGE: return 2;
+            case BGCOLOR.PINK: return 3;
+            case BGCOLOR.BLUE: return 4;
+            case BGCOLOR.PURPAL: return 5;
+            case BGCOLOR.YELLOW: return 6;
+            default: return 0;
+        }
+    }
+
+    public void RefreshSettingsUI()
+    {
+        // Refresh Sound
+        bool isMuted = PlayerPrefs.GetInt("SoundMute", 0) == 1;
+        UpdateSoundButton(isMuted);
+
+        // Refresh Vibration
+        bool isVibrationOn = PlayerPrefs.GetInt("Vibration", 1) == 1;
+        UpdateVibrationButton(isVibrationOn);
+
+        // Hide indicators during expansion to avoid visual jumps
+        SetSelectionIndicatorsActive(false);
+    }
+
+    public void FinalizeSelectionPositions()
+    {
+        StartCoroutine(SetInitialSelectionPositions());
     }
 
     public RangeUiHandler RangeUiHandler;

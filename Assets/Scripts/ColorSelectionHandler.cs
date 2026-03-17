@@ -63,6 +63,11 @@ public class ColorSelectionHandler : MonoBehaviour
         PlayerPrefs.SetInt("DiceColor", (int)color);
         PlayerPrefs.Save();
 
+        if (UiManager.instance != null)
+        {
+            UiManager.instance.UpdateSelectedColorPosition(color);
+        }
+
         if (FirebaseAnalyticsManager.instance != null)
             FirebaseAnalyticsManager.instance.LogSettingChanged("dice_color", color.ToString());
     }

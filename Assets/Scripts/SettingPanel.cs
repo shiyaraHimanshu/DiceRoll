@@ -36,10 +36,11 @@ public class SettingPanel : MonoBehaviour
         currentAnimationCoroutine = StartCoroutine(AnimatePanel(upYPosition, 1f, true));
         
         // Ensure UI boolean is updated
-        UiManager uiManager = FindObjectOfType<UiManager>();
+        UiManager uiManager = UiManager.instance != null ? UiManager.instance : FindObjectOfType<UiManager>();
         if (uiManager != null)
         {
             uiManager.isSettingOpen = true;
+            uiManager.RefreshSettingsUI();
         }
         if (DiceManager.instance != null)
         {
@@ -113,6 +114,14 @@ public class SettingPanel : MonoBehaviour
         if (!isOpening)
         {
             gameObject.SetActive(false);
+        }
+        else
+        {
+            // After opening animation is complete, finalize UI positions
+            if (UiManager.instance != null)
+            {
+                UiManager.instance.FinalizeSelectionPositions();
+            }
         }
     }
 }

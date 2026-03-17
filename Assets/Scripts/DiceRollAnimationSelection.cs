@@ -111,6 +111,11 @@ public class DiceRollAnimationSelection : MonoBehaviour
         PlayerPrefs.SetInt("DiceAnimation", value);
         PlayerPrefs.Save();
 
+        if (UiManager.instance != null)
+        {
+            UiManager.instance.UpdateSelectedAnimationPosition(value);
+        }
+
         if (FirebaseAnalyticsManager.instance != null)
             FirebaseAnalyticsManager.instance.LogSettingChanged("dice_animation", DiceManager.instance.currentAnimation.ToString());
 
