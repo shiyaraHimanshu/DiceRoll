@@ -145,7 +145,10 @@ public class DiceRollController : MonoBehaviour
             }
         }
 
-        DiceManager.instance.ShowUI();
+        if (DiceManager.instance != null)
+        {
+            DiceManager.instance.ShowUI();
+        }
         isDiceRolling = false;
         total.text = finalCount.ToString();
         
@@ -154,7 +157,7 @@ public class DiceRollController : MonoBehaviour
              DiceManager.instance.VibrateMobile();
         }
 
-        if(spawnedDice.Count > 1)
+        if(spawnedDice.Count > 1 && viewAnimation != null)
         {
             viewAnimation.PlayResultAnimation(finalCount);
         }

@@ -79,20 +79,13 @@ public class UiManager : MonoBehaviour
 
     public void UpdateSoundButton(bool isMuted)
     {
-        if (soundOnObject != null && soundOffObject != null)
+        if (soundOnObject != null)
         {
-            if (isMuted)
-            {
-                // Muted means sound is OFF
-                soundOnObject.SetActive(false);
-                soundOffObject.SetActive(true);
-            }
-            else
-            {
-                // Not muted means sound is ON
-                soundOnObject.SetActive(true);
-                soundOffObject.SetActive(false);
-            }
+            soundOnObject.SetActive(!isMuted);
+        }
+        if (soundOffObject != null)
+        {
+            soundOffObject.SetActive(isMuted);
         }
     }
 
@@ -110,18 +103,13 @@ public class UiManager : MonoBehaviour
 
     public void UpdateVibrationButton(bool isVibrationOn)
     {
-        if (vibrateOnObject != null && vibrateOffObject != null)
+        if (vibrateOnObject != null)
         {
-            if (isVibrationOn)
-            {
-                vibrateOnObject.SetActive(true);
-                vibrateOffObject.SetActive(false);
-            }
-            else
-            {
-                vibrateOnObject.SetActive(false);
-                vibrateOffObject.SetActive(true);
-            }
+            vibrateOnObject.SetActive(isVibrationOn);
+        }
+        if (vibrateOffObject != null)
+        {
+            vibrateOffObject.SetActive(!isVibrationOn);
         }
     }
 
