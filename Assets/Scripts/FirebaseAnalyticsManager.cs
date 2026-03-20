@@ -108,4 +108,20 @@ public class FirebaseAnalyticsManager : MonoBehaviour
             new Parameter("value", newValue)
         });
     }
+
+    public void LogIAPEvent(string productId, string status, string error = "")
+    {
+        List<Parameter> parameters = new List<Parameter>
+        {
+            new Parameter("product_id", productId),
+            new Parameter("status", status)
+        };
+
+        if (!string.IsNullOrEmpty(error))
+        {
+            parameters.Add(new Parameter("error_message", error));
+        }
+
+        LogEvent("iap_event", parameters.ToArray());
+    }
 }

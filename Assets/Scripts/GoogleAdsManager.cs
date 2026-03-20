@@ -27,6 +27,13 @@ public class GoogleAdsManager : MonoBehaviour
 
     void Start()
     {
+        // Check if user has purchased "No Ads"
+        if (PlayerPrefs.GetInt("NoAdsPurchased", 0) == 1)
+        {
+            Debug.Log("User has purchased No Ads. Not initializing Mobile Ads.");
+            return;
+        }
+
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize((InitializationStatus status) =>
         {
@@ -37,6 +44,12 @@ public class GoogleAdsManager : MonoBehaviour
 
     public void LoadInterstitialAd()
     {
+        // Check if user has purchased "No Ads"
+        if (PlayerPrefs.GetInt("NoAdsPurchased", 0) == 1)
+        {
+            return;
+        }
+
         // Clean up the old ad before loading a new one.
         if (_interstitialAd != null)
         {
@@ -77,6 +90,13 @@ public class GoogleAdsManager : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
+        // Check if user has purchased "No Ads"
+        if (PlayerPrefs.GetInt("NoAdsPurchased", 0) == 1)
+        {
+            Debug.Log("Not showing ad because No Ads is purchased.");
+            return;
+        }
+
         if (_interstitialAd != null && _interstitialAd.CanShowAd())
         {
             Debug.Log("Showing interstitial ad.");

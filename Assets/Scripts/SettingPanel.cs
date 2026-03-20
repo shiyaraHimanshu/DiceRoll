@@ -14,6 +14,9 @@ public class SettingPanel : MonoBehaviour
     [SerializeField] private float animationDuration = 0.3f;
     [SerializeField] private AnimationCurve animationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    [Header("IAP Settings")]
+    [SerializeField] private GameObject removeAdsButton;
+
     private CanvasGroup canvasGroup;
     public RectTransform rectTransform;
     private Coroutine currentAnimationCoroutine;
@@ -41,6 +44,13 @@ public class SettingPanel : MonoBehaviour
         {
             uiManager.isSettingOpen = true;
             uiManager.RefreshSettingsUI();
+        }
+
+        // Handle Remove Ads Button visibility
+        if (removeAdsButton != null)
+        {
+            bool alreadyPurchased = PlayerPrefs.GetInt("NoAdsPurchased", 0) == 1;
+            removeAdsButton.SetActive(!alreadyPurchased);
         }
         if (DiceManager.instance != null)
         {

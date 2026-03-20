@@ -237,4 +237,16 @@ public class UiManager : MonoBehaviour
             if (settingPanel != null) settingPanel.Open();
         }
     }
+
+    public void OnRemoveAdsButtonClick()
+    {
+        if (IAPManager.instance != null)
+        {
+            IAPManager.instance.BuyNoAds();
+        }
+        else
+        {
+            Debug.LogError("IAPManager instance is null.");
+        }
+    }
 }
