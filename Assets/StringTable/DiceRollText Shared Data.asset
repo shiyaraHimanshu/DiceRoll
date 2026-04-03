@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Key: SETTING
     m_Metadata:
       m_Items: []
+  - m_Id: 6534730468675584
+    m_Key: TXT_REMOVE_ADS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -15,6 +15,8 @@ public class UiManager : MonoBehaviour
     public GameObject vibrateOnObject;
     public GameObject vibrateOffObject;
 
+    public GameObject removeAdsButton;
+
     public Image selectedAnimationbase;
     public Image selectedColorbase;
 
@@ -47,6 +49,12 @@ public class UiManager : MonoBehaviour
         // Initialize Vibration Button
         bool isVibrationOn = PlayerPrefs.GetInt("Vibration", 1) == 1;
         UpdateVibrationButton(isVibrationOn);
+
+        // Check if ads already removed
+        if (PlayerPrefs.GetInt("AdsRemoved", 0) == 1)
+        {
+            HideRemoveAdsButton();
+        }
 
         // Initialize Selection Positions with a slight delay to ensure layout is ready
         StartCoroutine(SetInitialSelectionPositions());
@@ -110,6 +118,22 @@ public class UiManager : MonoBehaviour
         if (vibrateOffObject != null)
         {
             vibrateOffObject.SetActive(!isVibrationOn);
+        }
+    }
+
+    public void OnBuyRemoveAdsClick()
+    {
+        if (IAPHandler.instance != null)
+        {
+            IAPHandler.instance.BuyRemoveAds();
+        }
+    }
+
+    public void HideRemoveAdsButton()
+    {
+        if (removeAdsButton != null)
+        {
+            removeAdsButton.SetActive(false);
         }
     }
 

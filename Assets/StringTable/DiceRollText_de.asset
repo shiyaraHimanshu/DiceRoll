@@ -58,6 +58,10 @@ MonoBehaviour:
     m_Localized: Einstellungen
     m_Metadata:
       m_Items: []
+  - m_Id: 6534730468675584
+    m_Localized: Werbung entfernen
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

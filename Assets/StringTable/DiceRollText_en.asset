@@ -58,6 +58,10 @@ MonoBehaviour:
     m_Localized: SETTING
     m_Metadata:
       m_Items: []
+  - m_Id: 6534730468675584
+    m_Localized: Remove Ads
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

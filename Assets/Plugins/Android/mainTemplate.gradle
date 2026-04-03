@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply from: '../shared/keepUnitySymbols.gradle'
+// apply from: '../shared/keepUnitySymbols.gradle'
 **APPLY_PLUGINS**
 
 dependencies {
@@ -23,8 +23,7 @@ dependencies {
 
 // Android Resolver Exclusions Start
 android {
-    ndkVersion "**NDKVERSION**"
-  packaging {
+  packagingOptions {
       exclude ('/lib/armeabi/*' + '*')
       exclude ('/lib/armeabi-v7a/*' + '*')
       exclude ('/lib/mips/*' + '*')
@@ -37,7 +36,7 @@ android {
 android {
     namespace "com.unity3d.player"
     ndkPath "**NDKPATH**"
-    compileSdk **APIVERSION**
+    compileSdkVersion **APIVERSION**
     buildToolsVersion '**BUILDTOOLS**'
 
     compileOptions {
@@ -47,8 +46,8 @@ android {
 
     defaultConfig {
 **DEFAULT_CONFIG_SETUP**
-        minSdk **MINSDK**
-        targetSdk **TARGETSDK**
+        minSdkVersion **MINSDK**
+        targetSdkVersion **TARGETSDK**
         ndk {
             debugSymbolLevel **DEBUGSYMBOLLEVEL**
             abiFilters **ABIFILTERS**

@@ -27,6 +27,12 @@ public class GoogleAdsManager : MonoBehaviour
 
     void Start()
     {
+        if (IsAdsRemoved())
+        {
+            Debug.Log("Ads are removed, not initializing Google Mobile Ads.");
+            return;
+        }
+
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize((InitializationStatus status) =>
         {
@@ -35,8 +41,15 @@ public class GoogleAdsManager : MonoBehaviour
         });
     }
 
+    public bool IsAdsRemoved()
+    {
+        return PlayerPrefs.GetInt("AdsRemoved", 0) == 1;
+    }
+
     public void LoadInterstitialAd()
     {
+        if (IsAdsRemoved()) return;
+
         // Clean up the old ad before loading a new one.
         if (_interstitialAd != null)
         {
@@ -77,6 +90,8 @@ public class GoogleAdsManager : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
+        if (IsAdsRemoved()) return;
+        
         if (_interstitialAd != null && _interstitialAd.CanShowAd())
         {
             Debug.Log("Showing interstitial ad.");
