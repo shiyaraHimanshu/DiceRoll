@@ -43,6 +43,10 @@ public class GoogleAdsManager : MonoBehaviour
 
     public bool IsAdsRemoved()
     {
+        if (IAPHandler.instance != null)
+        {
+            return IAPHandler.instance.IsAdsRemoved();
+        }
         return PlayerPrefs.GetInt("AdsRemoved", 0) == 1;
     }
 

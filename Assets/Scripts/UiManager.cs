@@ -137,6 +137,14 @@ public class UiManager : MonoBehaviour
         }
     }
 
+    public void ShowRemoveAdsButton()
+    {
+        if (removeAdsButton != null)
+        {
+            removeAdsButton.SetActive(true);
+        }
+    }
+
     public void SetSelectionIndicatorsActive(bool isActive)
     {
         if (selectedColorbase != null) selectedColorbase.gameObject.SetActive(isActive);
